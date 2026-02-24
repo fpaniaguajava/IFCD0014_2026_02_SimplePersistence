@@ -1,19 +1,22 @@
-package com.cursogetafe.persistence;
+package com.cursogetafe.persistence.impl;
 
 import com.cursogetafe.model.Serie;
+import com.cursogetafe.persistence.interfaces.ISerieDAO;
 
 import java.io.*;
 import java.util.List;
 
-public class SerieDAOFileImpl implements ISerieDAO{
+public class SerieDAOFileImpl implements ISerieDAO {
     @Override
-    public Serie create(Serie serie) {
+    public Serie create(Serie serie) throws IOException {
         try (FileOutputStream fileOut = new FileOutputStream(serie.getTitulo()+".txt");
             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
             out.writeObject(serie);
             System.out.println("Objeto guardado correctamente");
         } catch (IOException e) {
-            e.printStackTrace();
+            //¿Creamos un registro de log?
+            //¿Hacemos alguna acción extra como enviar un correo
+            throw e;
         }
         return serie;
     }
