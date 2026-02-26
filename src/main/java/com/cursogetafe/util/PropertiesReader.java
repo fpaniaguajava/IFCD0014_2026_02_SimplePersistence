@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Lector de properties de un fichero ubicado en la raíz del proyecto
+ */
 public class PropertiesReader {
     public static String readProperty(String fileName, String key) {
         Properties properties = new Properties();

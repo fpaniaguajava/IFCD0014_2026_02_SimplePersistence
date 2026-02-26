@@ -8,6 +8,31 @@
     <artifactId>IFCD0014_2026_02_SimplePersistence</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <profiles>
+        <profile>
+            <id>Desarrollo</id>
+            <properties>
+                <persistence-type>FILE</persistence-type>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>Preexplotacion</id>
+            <properties>
+                <persistence-type>SQLITE</persistence-type>
+            </properties>
+        </profile>
+        <profile>
+            <id>Produccion</id>
+            <properties>
+                <persistence-type>POSTGRE</persistence-type>
+            </properties>
+        </profile>
+    </profiles>
+
+
     <dependencies>
         <!-- Source: https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
         <dependency>
@@ -29,5 +54,26 @@
         <maven.compiler.target>25</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>com.cursogetafe.Main</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
 
 </project>

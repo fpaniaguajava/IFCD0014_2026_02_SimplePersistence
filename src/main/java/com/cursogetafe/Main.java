@@ -7,10 +7,10 @@ import com.cursogetafe.persistence.factory.SerieDAOFactory;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    static void main() {
+    public static void main(String[] args) {
         ISerieDAO sdf = SerieDAOFactory.getSerieDAOImpl();
         try {
-            Serie nuevaSerie = sdf.create(new Serie("Batman", "Ciencia ficción", 2));
+            Serie nuevaSerie = sdf.create(new Serie("Last-of-us", "Ciencia ficción", 2));
             System.out.println(nuevaSerie);
             //Serie serie = sdf.read("titulo");
             //System.out.println(serie);

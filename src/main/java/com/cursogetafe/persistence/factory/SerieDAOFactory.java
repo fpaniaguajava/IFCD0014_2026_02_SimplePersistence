@@ -4,11 +4,13 @@ import com.cursogetafe.persistence.impl.SerieDAOFileImpl;
 import com.cursogetafe.persistence.impl.SerieDAOPostgreImpl;
 import com.cursogetafe.persistence.interfaces.ISerieDAO;
 import com.cursogetafe.persistence.impl.SerieDAOSQLiteImpl;
+import com.cursogetafe.util.AppPropertiesReader;
 import com.cursogetafe.util.PropertiesReader;
 
 public class SerieDAOFactory {
     public static ISerieDAO getSerieDAOImpl(){
-        String value = PropertiesReader.readProperty("config.prop","PERSISTENCE_TYPE");
+        //String value = PropertiesReader.readProperty("config.prop","PERSISTENCE_TYPE");
+        String value = AppPropertiesReader.readProperty("application.properties","PERSISTENCE_TYPE");
         PersistenceType persistenceType = PersistenceType.valueOf(value);
         switch (persistenceType) {
             case PersistenceType.FILE:
