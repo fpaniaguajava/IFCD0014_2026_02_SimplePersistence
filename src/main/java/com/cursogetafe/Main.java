@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         ISerieDAO sdf = SerieDAOFactory.getSerieDAOImpl();
         try {
-            Serie nuevaSerie = sdf.create(new Serie("Last-of-us", "Ciencia ficción", 2));
+            Serie nuevaSerie = sdf.create(new Serie("Alien", "Terror", 11));
             System.out.println(nuevaSerie);
             //Serie serie = sdf.read("titulo");
             //System.out.println(serie);
